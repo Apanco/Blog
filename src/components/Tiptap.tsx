@@ -29,7 +29,7 @@ type TiptapProps = {
 const CustomHardBreak = HardBreak.extend({
     addKeyboardShortcuts() {
       return {
-        'Enter': () => this.editor.commands.setHardBreak(), // Ctrl+Enter o Cmd+Enter
+        'Mod-Enter': () => this.editor.commands.setHardBreak(), // Ctrl+Enter o Cmd+Enter
         'Shift-Enter': () => this.editor.commands.setHardBreak(), // Shift+Enter
       };
     },

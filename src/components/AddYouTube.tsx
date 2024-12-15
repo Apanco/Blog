@@ -39,9 +39,10 @@ export default function AddYouTube( {editor} : AddYouTubeTypes ) {
             setOpen(false)
             editor.commands.setYoutubeVideo({
                 src: formValues.url,
-                width:  1080,
-                height:  720,
-            })
+                width: 1080,
+                height: 720,
+            });
+            
         }
     }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +51,7 @@ export default function AddYouTube( {editor} : AddYouTubeTypes ) {
             ...prevValues,
             [name]: value, // Actualiza el campo dinámicamente según su atributo "name"
         }));
-        console.log(formValues)
+
     };
     return (
         <Dialog open={open} onOpenChange={setOpen}>

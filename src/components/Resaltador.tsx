@@ -18,6 +18,7 @@ const highlightColors = [
 
 export default function Resaltador({editor} : ResaltadorProps) {
     if (!editor) return null;
+    const [open, setOpen] = useState(false);
     const [classColor, setClassColor] = useState<string>("border-0") 
     const [esExcluido,setEx] = useState<boolean>(false) 
     const checkActiveHighlight = () => {
@@ -61,7 +62,7 @@ export default function Resaltador({editor} : ResaltadorProps) {
             >
                 <Highlighter className=" w-4 h-4"/>
             </Toggle>
-            <DropdownMenu>
+            <DropdownMenu open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                     <Button variant={"ghost"} className=" px-0 rounded-l-none" size={"sm"}
                         onClick={() => editor.chain().focus().unsetHighlight().run()}
@@ -73,20 +74,26 @@ export default function Resaltador({editor} : ResaltadorProps) {
                     <DropdownMenuLabel>Colores</DropdownMenuLabel>
                     <DropdownMenuGroup className=" grid grid-cols-3 mx-auto gap-3 px-1">
                         <Button className=" w-[55px]  h-[55px] p-0 bg-transparent hover:bg-primary-foreground"> <CircleOff className=" text-primary w-4 h-4"/> </Button>
-                            <Button className=" w-[55px]  h-[55px] p-0 bg-[#ffff00] hover:bg-[#ffff00] hover:opacity-85"
-                                onClick={() => editor.chain().focus().toggleHighlight({ color: '#ffff00' }).run()}></Button>
+                        <Button className=" w-[55px]  h-[55px] p-0 bg-[#ffff00] hover:bg-[#ffff00] hover:opacity-85"
+                            onClick={() => {
+                                setOpen(false)
+                                editor.chain().focus().toggleHighlight({ color: '#ffff00' }).run(); 
+                            }}></Button>
 
-                            <Button className=" w-[55px]  h-[55px] p-0 bg-orange-300 hover:bg-orange-300 hover:opacity-85"
-                                onClick={() => editor.chain().focus().toggleHighlight({ color: '#fdba74' }).run()}></Button>
+                        <Button className=" w-[55px]  h-[55px] p-0 bg-orange-300 hover:bg-orange-300 hover:opacity-85"
+                            onClick={() => {
+                                setOpen(false)
+                                editor.chain().focus().toggleHighlight({ color: '#fdba74' }).run()
+                            }}></Button>
 
-                            <Button className=" w-[55px]  h-[55px] p-0 bg-green-400 hover:bg-green-400 hover:opacity-85"
-                                onClick={() => editor.chain().focus().toggleHighlight({ color: '#4ade80' }).run()}></Button>
+                        <Button className=" w-[55px]  h-[55px] p-0 bg-green-400 hover:bg-green-400 hover:opacity-85"
+                            onClick={() => {editor.chain().focus().toggleHighlight({ color: '#4ade80' }).run(); setOpen(false) }}></Button>
 
-                            <Button className=" w-[55px]  h-[55px] p-0 bg-blue-400 hover:bg-blue-400 hover:opacity-85"
-                                onClick={() => editor.chain().focus().toggleHighlight({ color: '#60a5fa' }).run()}></Button>
+                        <Button className=" w-[55px]  h-[55px] p-0 bg-blue-400 hover:bg-blue-400 hover:opacity-85"
+                            onClick={() => {editor.chain().focus().toggleHighlight({ color: '#60a5fa' }).run(); setOpen(false)  }}></Button>
 
-                            <Button className=" w-[55px]  h-[55px] p-0 bg-purple-400 hover:bg-purple-400 hover:opacity-85"
-                                onClick={() => editor.chain().focus().toggleHighlight({ color: '#c084fc' }).run()}></Button>
+                        <Button className=" w-[55px]  h-[55px] p-0 bg-purple-400 hover:bg-purple-400 hover:opacity-85"
+                            onClick={() => {editor.chain().focus().toggleHighlight({ color: '#c084fc' }).run(); setOpen(false)  }}></Button>
                     </DropdownMenuGroup>
                 </DropdownMenuContent>
             </DropdownMenu>
