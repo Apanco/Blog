@@ -8,6 +8,7 @@ import {
   import { NavMain } from "@/components/nav-main"
 import { FileText, Folder } from "lucide-react"
 import AppSideHeader from "./AppSideHeader"
+import { ModeToggle } from "./mode-toggle"
 
 
   const data = {
@@ -65,6 +66,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {/* <NavUser user={data.user} /> */}
         </SidebarFooter>
         <SidebarRail />
+        <SidebarFooter>
+            <ModeToggle/>
+        </SidebarFooter>
       </Sidebar>
     )
   }

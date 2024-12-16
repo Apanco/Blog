@@ -4,7 +4,6 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Newspaper } from "lucide-react"
-import { ModeToggle } from "./mode-toggle"
 
 export default function AppSideHeader() {
     return (
@@ -23,9 +22,7 @@ export default function AppSideHeader() {
                         </span>
                         <span className="truncate text-xs">{"Administrador"}</span>
                     </div>
-                    <div>
-                        <ModeToggle/>
-                    </div>
+                    
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
