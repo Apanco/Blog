@@ -50,7 +50,10 @@ export default function Tiptap( {description, onChange, field} : TiptapProps ) {
         }),
         FontFamily,
         Text, 
-        ListItem,
+        OrderedList,
+        ListItem.configure({
+            
+        }),
         Paragraph,
         TextStyle,
         Bold,
@@ -58,7 +61,6 @@ export default function Tiptap( {description, onChange, field} : TiptapProps ) {
         Underline,
         Strike,
         Document,
-        OrderedList,
         CustomYoutube,
         CustomHardBreak,
         TextAlign.configure({
@@ -67,7 +69,10 @@ export default function Tiptap( {description, onChange, field} : TiptapProps ) {
         }),
         Highlight.configure({ multicolor: true }),
         BulletList.configure({
-            keepMarks:true
+            keepMarks:true,
+            HTMLAttributes:{
+                class:"list-disc ml-5"
+            }
         })
     ],
         content:description,
